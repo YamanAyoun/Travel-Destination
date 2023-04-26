@@ -1,8 +1,11 @@
+import React from 'react';
 import './Header.css'
+
+import Navbar from '../Navbar/Navbar';
 function Header() {
   return (
     <header>
-      <h1>Hello the react web</h1>
+      <Navbar/>
     </header>
   );
 }
