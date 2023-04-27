@@ -5,7 +5,6 @@ function Navbar() {
   return (
     <header>
       <h1><Link to="/">Home</Link></h1>
-      <h1><Link to="/city/:id">Tourdetail</Link></h1>
     </header>
   );
 }

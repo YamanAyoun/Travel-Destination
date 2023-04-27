@@ -1,16 +1,17 @@
 import React from 'react';
 import './Tours.css'
 import Tour from './tour/Tour'
+import { Link } from 'react-router-dom';
 function Tours(props) {
   return (
-    <div className="tours">
+    <div>
       {props.db.map((tour) => {
         return(
-        //     <div key={tour.id}>
-        //   <h2>{tour.name}</h2>
-        //   <img src={tour.image} alt={tour.name} />
-        // </div>
-        <Tour key={tour.id} tour={tour} />
+        <div key={tour.id}>
+        <Link to={`/city/${tour.id}`}>
+        <Tour name={tour.name} image={tour.image} />
+        </Link>
+        </div>
         )
   
 })}

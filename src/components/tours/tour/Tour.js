@@ -2,12 +2,11 @@ import React from 'react';
 import './Tour.css'
 
 function Tour(props) {
-  const { name, image } = props.tour
-
+  
   return (
-    <div className="tour-card">
-      <h2>{name}</h2>
-      <img src={image} alt={name} />
+    <div>
+      <h2>{props.name}</h2>
+      <img src={props.image} alt={props.name} />
     </div>
     
   )

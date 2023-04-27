@@ -1,30 +1,42 @@
-import React from 'react';
-import { useParams } from 'react';
+import { useParams } from "react-router-dom";
+import { useState } from 'react';
 import './TourDetails.css';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Tour from '../tours/tour/Tour';
 
-function TourDetails(props) {
+const Data = require("../../data/db.json")
 
+function TourDetails() {
+
+  const {id} = useParams();
+  const [view, setView] = useState(false);
   return (
 
     <>
-      {props.db.map((tour) => {
-        return (
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={tour.image} />
-            <Card.Body>
-              <Card.Title>City</Card.Title>
-              <Card.Text>
-              <p>City name is {tour.name}about more information {tour.info}</p>
-              </Card.Text>
-              <Button variant="primary">go</Button>
-            </Card.Body>
-          </Card>
-         
-         )
-      })} 
+     {
+      Data.map(element=>{
+        if(element.id == id){
+          return(
+            <div>
+              <h2>{element.name}</h2>
+              <img class="img" src={element.image} alt={element.name}/>
+              <h3>{element.price} $</h3>
+            <div>
+            {
+              view? <>
+              <p>{element.info}</p>
+              <button onClick={()=>setView(false)}>Show less</button>
+              </>
+              :
+              <>
+              <p>{(element.info).substring(0,200)}</p>
+              <button onClick={()=>setView(true)}>Show more</button>
+              </>
+            }
+            </div>
+            </div>
+          )
+        }
+      })
+     }
     </>
   )
 }
